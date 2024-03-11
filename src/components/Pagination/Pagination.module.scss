@@ -1,0 +1,32 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.button {
+  width: 100px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rebeccapurple;
+  background-color: rebeccapurple;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: rgb(120, 63, 177);
+  }
+  &:disabled {
+    background-color: rgb(187, 165, 209);
+    border: none;
+    cursor: default;
+  }
+}
+
+.counter {
+  margin: 0 30px;
+}

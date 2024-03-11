@@ -13,7 +13,11 @@ const Products: FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [products, setProducts] = useState<Product[]>([])
 
-  const fetchIds = async (currentPage: number) => {
+  const fetchIds = async (
+    currentPage: number,
+    retries: number = 3,
+    delay: number = 1000
+  ) => {
     try {
       if (!currentPage) {
         return
@@ -28,8 +32,12 @@ const Products: FC = () => {
       setTotalPages(pagesLength)
       setIds(res.result)
     } catch (error) {
-      fetchIds(currentPage)
       console.error(error)
+      if (retries > 0) {
+        setTimeout(() => {
+          fetchIds(currentPage, retries - 1, delay * 2)
+        }, delay)
+      }
     }
   }
 
